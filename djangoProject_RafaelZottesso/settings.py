@@ -139,4 +139,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #configuracoes de Autenticacao
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
+
 LOGIN_URL = 'login' #vai redirecionar caso tente acessar sem ter feito o login

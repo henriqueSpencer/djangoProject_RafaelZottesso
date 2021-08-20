@@ -1,0 +1,38 @@
+{% extends '../modelo.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    <title>Lista</title>
+{% endblock %}
+
+{% block conteudo1 %}
+    <a href="{% url 'cadastrar-status' %}" class="btn btn-primary btn-sm">Adicionar Status</a>
+
+    <h3>Estamos no Formulário</h3>
+    <div class="table-responsive">
+        <table class=" table table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+            </tr>
+            {% for status in object_list %}
+                <tr>
+                    <td>{{ status.nome }}</td>
+                    <td>{{ status.descricao }}</td>
+                    <td>
+                        <a href="{% url 'editar-status' status.pk %}" class="btn btn-warning btn-sm" title="Editar">Editar</a>
+                        <a href="{% url 'excluir-status' status.pk %}" class="btn btn-danger btn-sm" title="Excluir">Excluir</a>
+                    </td>
+
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3"> Nenhum Campo Registrado</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+{% block conteudo2 %}
+{% endblock %}

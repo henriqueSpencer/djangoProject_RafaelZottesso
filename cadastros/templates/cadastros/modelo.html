@@ -26,9 +26,7 @@
     <li class="nav-item">
       <a class="nav-link"  href="{% url 'sobre' %}">Sobre</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link 2</a>
-    </li>
+
 
     <!-- Dropdown -->
     <li class="nav-item dropdown">
@@ -39,7 +37,25 @@
           {% block menu_drop %}
         <a class="dropdown-item" href="{% url 'listar-campos' %}"> CAMPOS </a>
         <a class="dropdown-item" href="{% url 'listar-atividades' %}"> ATIVIDADES </a>
-        <a class="dropdown-item" href="#">Link 3</a>
+        <a class="dropdown-item" href="{% url 'listar-status' %}"> status </a>
+        <a class="dropdown-item" href="{% url 'listar-classes' %}"> classes </a>
+        <a class="dropdown-item" href="{% url 'listar-campus' %}"> campus </a>
+          {% endblock %}
+      </div>
+    </li>
+
+    <li class="nav-item dropdown nav-item-right">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          {{ request.user }}
+      </a>
+      <div class="dropdown-menu">
+          {% block menu_drop_login %}
+        <a class="dropdown-item" href="{% url 'login' %}"> Login </a>
+              {% if request.user.is_authenticated %}
+         <a class="dropdown-item" href="{% url 'logout' %}"> Logout  </a>
+                  {% else %}
+                   <a class="dropdown-item" href="#"> VC nao esta logado  </a>
+              {% endif %}
           {% endblock %}
       </div>
     </li>

@@ -6,6 +6,7 @@ from django.views.generic.list import ListView
 from .models import Campo, Atividade, Status, Classe, Campus
 
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class CampoCreate(CreateView):
     model = Campo
@@ -98,11 +99,13 @@ class CampusDelete(DeleteView):
 
 ################### LISTA ############################
 
-class CampoList(ListView):
+class CampoList(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
     model = Campo
     template_name = 'cadastros/listas/campo.html'
 
-class AtividadeList(ListView):
+class AtividadeList(LoginRequiredMixin, ListView): #TODO:login serve para ficar acessivel so se logado
+    login_url = reverse_lazy('login')
     model = Atividade
     template_name = 'cadastros/listas/atividade.html'
 

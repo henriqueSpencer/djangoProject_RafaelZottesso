@@ -29,6 +29,6 @@ urlpatterns = [
     path('listar/atividades/', AtividadeList.as_view(), name="listar-atividades"),  # int pk = primari key
     path('listar/status/', StatusList.as_view(), name="listar-status"),  # int pk = primari key
     path('listar/classes/', ClasseList.as_view(), name="listar-classes"),  # int pk = primari key
-    path('listar/campus/', CampusList.as_view(), name="listar-campuss"),  # int pk = primari key
+    path('listar/campus/', CampusList.as_view(), name="listar-campus"),  # int pk = primari key
 
 ]

@@ -1,0 +1,40 @@
+{% extends '../modelo.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    <title>Lista</title>
+{% endblock %}
+
+{% block conteudo1 %}
+    <a href="{% url 'cadastrar-campus' %}" class="btn btn-primary btn-sm">Adicionar Campus</a>
+
+    <h3>Estamos no Formulário</h3>
+    <div class="table-responsive">
+        <table class=" table table-striped">
+            <tr>
+                <th>Cidade</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+            </tr>
+            {% for campus in object_list %}
+                <tr>
+                    <td>{{ campus.cidade }}</td>
+                    <td>{{ campus.endereço }}</td>
+                    <td>{{ campus.telefone }}</td>
+                    <td>
+                        <a href="{% url 'editar-campus' campus.pk %}" class="btn btn-warning btn-sm" title="Editar">Editar</a>
+                        <a href="{% url 'excluir-campus' campus.pk %}" class="btn btn-danger btn-sm" title="Excluir">Excluir</a>
+                    </td>
+
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3"> Nenhum Campo Registrado</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+{% block conteudo2 %}
+{% endblock %}
